@@ -1,42 +1,166 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* General App Container Styles */
+.App {
+  max-width: 600px;
+  margin: 0 auto; /* Centering the app container */
+  padding: 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Simple, clean font */
+  background-color: var(--background-color-app, #fff); /* Light theme default */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.App h1 {
   text-align: center;
+  color: var(--text-color-header, #333); /* Light theme default */
+  margin-bottom: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Form Styling (AddTodoForm) */
+form {
+  display: flex; /* Align input and button */
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+form input[type="text"] {
+  flex-grow: 1; /* Input takes available space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px; /* Rounded corners on the left */
+  font-size: 16px;
+}
+
+form button[type="submit"] {
+  padding: 10px 15px;
+  background-color: #007bff; /* Blue color for add button */
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0; /* Rounded corners on the right */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* TodoList (ul) Styling */
+ul {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0;
+}
+
+/* TodoItem (li) Styling */
+li {
+  display: flex; /* Align items in a row */
+  align-items: center; /* Vertically center items */
+  padding: 10px;
+  margin-bottom: 10px; /* Space between items */
+  background-color: var(--background-color-item, #f9f9f9); /* Light theme default */
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: background-color 0.2s;
+}
+
+li:hover {
+  background-color: var(--background-color-item-hover, #f0f0f0); /* Light theme default */
+}
+
+li input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+  /* Larger checkbox for easier clicking */
+  width: 18px;
+  height: 18px;
+}
+
+li span {
+  flex-grow: 1; /* Text takes available space */
+  font-size: 16px;
+  color: var(--text-color-item, #333); /* Light theme default */
+}
+
+li span.completed {
+  text-decoration: line-through;
+  color: #888; /* Grey out completed tasks */
+}
+
+li button {
+  background-color: #dc3545; /* Red color for delete button */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+li button:hover {
+  background-color: #c82333;
+}
+
+/* Dark theme specific styles */
+@media (prefers-color-scheme: dark) {
+  .App {
+    --background-color-app: #3a3a3a; /* Darker background for the app container */
+    --text-color-header: #f0f0f0;    /* Lighter text for headers */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   }
-  to {
-    transform: rotate(360deg);
+
+  .App h1 {
+    color: var(--text-color-header);
+  }
+  
+  form input[type="text"] {
+    background-color: #444;
+    border-color: #555;
+    color: #f0f0f0;
+  }
+
+  form button[type="submit"] {
+    background-color: #007bff; /* Keep it vibrant or choose a dark-theme friendly blue */
+  }
+  form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  li {
+    --background-color-item: #484848;       /* Darker background for items */
+    --background-color-item-hover: #505050; /* Slightly lighter on hover */
+    --text-color-item: #e0e0e0;             /* Lighter text for items */
+    border-color: #555;
+  }
+
+  li span {
+    color: var(--text-color-item);
+  }
+
+  li span.completed {
+    color: #aaa; /* Lighter grey for completed tasks in dark mode */
+  }
+
+  li button {
+    background-color: #c82333; /* Keep delete button red, or adjust if needed */
+  }
+  li button:hover {
+    background-color: #a01c28;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
+/* Styles for the "No tasks yet!" message */
+p {
+  text-align: center;
   color: #888;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  p {
+    color: #aaa; /* Lighter color for the message in dark mode */
+  }
 }
